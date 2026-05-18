@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALD — Nordic Precision. Built for Performance.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1A2332;
+    --teal: #4A9B8E;
+    --teal-light: #5db8a8;
+    --teal-dark: #3a7a6e;
+    --off-white: #F5F3EF;
+    --warm-grey: #E8E5E0;
+    --mid-grey: #9A9590;
+    --dark-grey: #3D3A36;
+    --white: #FFFFFF;
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--navy);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26, 35, 50, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid rgba(74, 155, 142, 0.2);
+  }
+
+  .nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal-light); }
+
+  .nav-cta {
+    background: var(--teal) !important;
+    color: var(--white) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 3px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--teal-light) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 64px 0 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(74, 155, 142, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    padding: 5rem 5% 5rem 8%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  .hero-pills {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.55);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-visual {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(74,155,142,0.08) 0%, transparent 50%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(74,155,142,0.04) 40px,
+        rgba(74,155,142,0.04) 41px
+      );
+  }
+
+  .hero-product-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(74,155,142,0.25);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+    width: min(380px, 90%);
+    text-align: center;
+  }
+
+  .hero-product-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, rgba(74,155,142,0.2), rgba(74,155,142,0.05));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border: 1px solid rgba(74,155,142,0.3);
+  }
+
+  .hero-product-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-product-name {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-product-detail {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  .hero-product-tags {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-tag {
+    background: rgba(74,155,142,0.15);
+    color: var(--teal-light);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(74,155,142,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── SECTION WRAPPERS ── */
+  section { padding: 6rem 5%; }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--mid-grey);
+    max-width: 520px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .what-section {
+    background: var(--white);
+  }
+
+  .what-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .what-header .section-eyebrow { justify-content: center; }
+  .what-header .section-eyebrow::before { display: none; }
+  .what-header .section-sub { margin: 0 auto; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--warm-grey);
+    border: 1.5px solid var(--warm-grey);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative;
+  }
+
+  .feature-card:hover { background: #fafaf9; }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .feature-desc {
+    font-size: 0.88rem;
+    color: var(--mid-grey);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+    transform-origin: left;
+  }
+
+  .feature-card:hover::after { transform: scaleX(1); }
+
+  /* ── WHY VALD ── */
+  .why-section {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,155,142,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .why-left .section-heading { color: var(--white); }
+  .why-left .section-sub { color: rgba(255,255,255,0.5); max-width: 100%; }
+
+  .founder-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-left: 2px solid var(--teal);
+    background: rgba(74,155,142,0.06);
+  }
+
+  .founder-note p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .founder-note cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-style: normal;
+  }
+
+  .compare-table {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .compare-row:last-child { border-bottom: none; }
+
+  .compare-cell {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .compare-cell:last-child { border-right: none; }
+
+  .compare-row.header-row .compare-cell {
+    background: rgba(74,155,142,0.1);
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .compare-cell.vald-col {
+    color: var(--teal-light);
+    font-weight: 500;
+  }
+
+  .check { color: var(--teal); font-weight: 700; }
+  .cross { color: rgba(255,100,100,0.6); }
+
+  /* ── COLLECTIONS PREVIEW ── */
+  .collections-section {
+    background: var(--off-white);
+  }
+
+  .collections-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .collection-card {
+    background: var(--navy);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: transform 0.25s;
+  }
+
+  .collection-card:hover { transform: translateY(-4px); }
+
+  .collection-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,35,50,0.95) 0%, rgba(26,35,50,0.3) 50%, transparent 100%);
+    z-index: 1;
+  }
+
+  .collection-card-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    opacity: 0.15;
+  }
+
+  .collection-pattern {
+    position: absolute;
+    inset: 0;
+  }
+
+  .collection-card:nth-child(1) .collection-pattern {
+    background: linear-gradient(135deg, #1e3a50, #1A2332);
+  }
+
+  .collection-card:nth-child(2) .collection-pattern {
+    background: linear-gradient(135deg, #1a3232, #1A2332);
+  }
+
+  .collection-card:nth-child(3) .collection-pattern {
+    background: linear-gradient(135deg, #2a2832, #1A2332);
+  }
+
+  .collection-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .collection-type {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+
+  .collection-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .collection-detail {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .collection-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background: rgba(74,155,142,0.2);
+    color: var(--teal-light);
+    font-size: 0.68rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(74,155,142,0.3);
+  }
+
+  /* ── SUSTAINABILITY ── */
+  .sustain-section {
+    background: var(--white);
+  }
+
+  .sustain-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .sustain-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sustain-pillar {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .pillar-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: rgba(74,155,142,0.1);
+    border: 1px solid rgba(74,155,142,0.2);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .pillar-text h4 {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .pillar-text p {
+    font-size: 0.82rem;
+    color: var(--mid-grey);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .sustain-visual {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sustain-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(74,155,142,0.08);
+  }
+
+  .sustain-big-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .sustain-visual h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .sustain-visual p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .sustain-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+
+  .sustain-metric {
+    background: rgba(255,255,255,0.03);
+    padding: 1rem;
+  }
+
+  .metric-label {
+    font-size: 0.68rem;
+    color: var(--teal);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .metric-val {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+
+  /* ── FAQ ── */
+  .faq-section {
+    background: var(--off-white);
+  }
+
+  .faq-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .faq-header .section-eyebrow { justify-content: center; }
+  .faq-header .section-eyebrow::before { display: none; }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--warm-grey);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--warm-grey);
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    text-align: left;
+    gap: 1rem;
+    font-family: var(--font-body);
+  }
+
+  .faq-q .arrow {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--teal);
+    transition: transform 0.25s, background 0.25s;
+  }
+
+  .faq-item.open .faq-q .arrow {
+    transform: rotate(45deg);
+    background: var(--teal);
+    color: var(--white);
+  }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  .faq-a-inner {
+    padding: 0 0 1.5rem;
+    font-size: 0.88rem;
+    color: var(--mid-grey);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,155,142,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .cta-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .cta-section h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .cta-section p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid rgba(74,155,142,0.4);
+  }
+
+  .cta-form input[type="email"] {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.88rem;
+    color: var(--white);
+    font-family: var(--font-body);
+    outline: none;
+  }
+
+  .cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.3); }
+
+  .cta-form button {
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-form button:hover { background: var(--teal-light); }
+
+  .cta-note {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    margin-top: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  .cta-perks {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-perk {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+  }
+
+  .cta-perk::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111820;
+    padding: 3rem 5% 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .nav-logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 260px;
+  }
+
+  .footer-col h5 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-col li a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+
+  .footer-col li a:hover { color: var(--teal-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .powered-by {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .powered-by a {
+    color: rgba(74,155,142,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .powered-by a:hover { color: var(--teal); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-bottom: 0;
+    }
+
+    .hero-content {
+      padding: 5rem 6% 3rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow { justify-content: center; }
+    .hero-desc { margin: 0 auto 2rem; }
+    .hero-actions { justify-content: center; }
+    .hero-pills { justify-content: center; }
+
+    .hero-visual {
+      height: 50vw;
+      min-height: 280px;
+      padding: 2rem;
+    }
+
+    .hero-scroll { display: none; }
+
+    .features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .why-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .collections-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .collection-card { aspect-ratio: 16/9; }
+
+    .sustain-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 4rem 5%; }
+
+    .hero-content { padding: 4.5rem 5% 2.5rem; }
+
+    .features-grid { grid-template-columns: 1fr; }
+
+    .compare-row { grid-template-columns: 1.2fr 1fr 1fr; }
+    .compare-cell { padding: 0.75rem 0.8rem; font-size: 0.75rem; }
+
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+    .cta-form { flex-direction: column; border-radius: 3px; }
+    .cta-form input[type="email"] { border-radius: 3px 3px 0 0; }
+    .cta-form button { border-radius: 0 0 3px 3px; text-align: center; }
+
+    .collections-header { flex-direction: column; align-items: flex-start; }
+
+    .hero h1 { font-size: 2.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">VALD<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#why">Why VALD</a></li>
+    <li><a href="#sustainability">Sustainability</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#join" class="nav-cta">Join the Circle</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Born in Finland</div>
+    <h1>Nordic precision.<br><em>Built for</em><br>performance.</h1>
+    <p class="hero-desc">Scandinavian sportswear engineered for the man who moves between the gym, the trail, and the city — without compromising on design, quality, or conscience.</p>
+    <div class="hero-actions">
+      <a href="#collections" class="btn-primary">Explore Collections</a>
+      <a href="#join" class="btn-outline">Join VALD Circle</a>
+    </div>
+    <div class="hero-pills">
+      <span class="pill">Training</span>
+      <span class="pill">Running</span>
+      <span class="pill">Athleisure</span>
+      <span class="pill">Nordic-Tested Fabrics</span>
+      <span class="pill">Plastic-Free Packaging</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-product-card">
+      <div class="hero-product-icon">⬡</div>
+      <div class="hero-product-label">Debut Drop — Coming Soon</div>
+      <div class="hero-product-name">Collection I: FJORD</div>
+      <p class="hero-product-detail">Technical merino-blend training essentials. Designed in Helsinki. Built for every environment between the squat rack and the Saturday morning run.</p>
+      <div class="hero-product-tags">
+        <span class="hero-tag">Recycled Fabrics</span>
+        <span class="hero-tag">4-Way Stretch</span>
+        <span class="hero-tag">Muted Palette</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what-section" id="features">
+  <div class="what-header">
+    <div class="section-eyebrow">What You Get</div>
+    <h2 class="section-heading">Every piece earns its place.</h2>
+    <p class="section-sub">VALD doesn't do bloated catalogs or seasonal noise. Each collection is intentional, small, and built to work together — or alone.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🎯</span>
+      <div class="feature-title">Curated Performance Collections</div>
+      <p class="feature-desc">Tight, intentional drops of training, running, and athleisure essentials — no overwhelming catalogs, just pieces that work together seamlessly.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">❄️</span>
+      <div class="feature-title">Nordic-Tested Fabrics</div>
+      <p class="feature-desc">Technical materials selected for breathability, stretch, and durability — tested and validated in harsh Nordic conditions so they perform anywhere.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🖤</span>
+      <div class="feature-title">Minimalist Design Language</div>
+      <p class="feature-desc">Clean Scandinavian aesthetics with muted tones and zero unnecessary branding. Gear that looks as good at brunch as it does in the squat rack.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">♻️</span>
+      <div class="feature-title">Sustainability Built In</div>
+      <p class="feature-desc">Recycled fabrics, responsible manufacturing partners, and plastic-free packaging. Transparency reports on every product page.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📐</span>
+      <div class="feature-title">The VALD Fit System</div>
+      <p class="feature-desc">Detailed fit guides with real-body measurements and a hassle-free exchange policy so every piece fits perfectly on the first try.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔒</span>
+      <div class="feature-title">Member Drops & Early Access</div>
+      <p class="feature-desc">Loyal customers get first access to limited collections, exclusive colorways, and member-only pricing through the VALD Circle program.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VALD -->
+<section class="why-section" id="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="section-eyebrow" style="color:var(--teal);">Why VALD</div>
+      <h2 class="section-heading">We built what<br>didn't exist.</h2>
+      <p class="section-sub">The choice between performance sportswear and clean, considered design shouldn't be a compromise. VALD refuses to make you pick one.</p>
+      <div class="founder-note">
+        <p>"I was tired of choosing between gear that performs and gear that looks considered. Most training wear either screams a logo at you or sacrifices function for aesthetics. VALD exists because that gap shouldn't exist — especially not in a country that takes both saunas and sport seriously."</p>
+        <cite>— The VALD Founders, Helsinki</cite>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="compare-table">
+        <div class="compare-row header-row">
+          <div class="compare-cell">Feature</div>
+          <div class="compare-cell">VALD</div>
+          <div class="compare-cell">Typical Fast-Fashion Sport</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Recycled technical fabrics</div>
+          <div class="compare-cell vald-col"><span class="check">✓</span> Standard</div>
+          <div class="compare-cell"><span class="cross">✗</span> Rare</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Curated, small drops</div>
+          <div class="compare-cell vald-col"><span class="check">✓</span> Always</div>
+          <div class="compare-cell"><span class="cross">✗</span> Volume-first</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Logo-minimal design</div>
+          <div class="compare-cell vald-col"><span class="check">✓</span> Core principle</div>
+          <div class="compare-cell"><span class="cross">✗</span> Logo-heavy</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Plastic-free packaging</div>
+          <div class="compare-cell vald-col"><span class="check">✓</span> Every order</div>
+          <div class="compare-cell"><span class="cross">✗</span> Uncommon</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Transparency reports</div>
+          <div class="compare-cell vald-col"><span class="check">✓</span> Per product</div>
+          <div class="compare-cell"><span class="cross">✗</span> None</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Hassle-free fit exchange</div>
+          <div class="compare-cell vald-col"><span class="check">✓</span> Built in</div>
+          <div class="compare-cell"><span class="cross">✗</span> Varies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections-section" id="collections">
+  <div class="collections-header">
+    <div>
+      <div class="section-eyebrow">The Range</div>
+      <h2 class="section-heading">Three territories.<br>One wardrobe.</h2>
+    </div>
+    <p class="section-sub" style="max-width:320px; text-align:right;">Each category is built for overlap — gear that earns its way from training to everyday without changing out of it.</p>
+  </div>
+  <div class="collections-grid">
+    <div class="collection-card">
+      <div class="collection-pattern"></div>
+      <div class="collection-card-bg">🏋️</div>
+      <div class="collection-content">
+        <div class="collection-type">Category 01</div>
+        <div class="collection-name">Training</div>
+        <p class="collection-detail">Compression-ready shorts, performance tops, and mid-layers engineered for the weight room and beyond.</p>
+        <span class="collection-badge">Drop I — Coming Soon</span>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-pattern"></div>
+      <div class="collection-card-bg">🏃</div>
+      <div class="collection-content">
+        <div class="collection-type">Category 02</div>
+        <div class="collection-name">Running</div>
+        <p class="collection-detail">Lightweight, wind-resistant essentials built for Nordic trails and urban miles — in muted tones that don't shout.</p>
+        <span class="collection-badge">Drop I — Coming Soon</span>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-pattern"></div>
+      <div class="collection-card-bg">🌆</div>
+      <div class="collection-content">
+        <div class="collection-type">Category 03</div>
+        <div class="collection-name">Athleisure</div>
+        <p class="collection-detail">Clean, considered pieces that move between the gym bag and the city without hesitation. Function disguised as everyday style.</p>
+        <span class="collection-badge">Drop I — Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section class="sustain-section" id="sustainability">
+  <div class="sustain-inner">
+    <div class="sustain-left">
+      <div class="section-eyebrow">Built with Responsibility</div>
+      <h2 class="section-heading">Sustainability isn't<br>a footnote here.</h2>
+      <p class="section-sub">We built responsibility into the process from the first sketch — not as a marketing layer applied after the fact.</p>
+      <div class="sustain-pillars" style="margin-top:2.5rem;">
+        <div class="sustain-pillar">
+          <div class="pillar-icon">🌿</div>
+          <div class="pillar-text">
+            <h4>Recycled & Responsible Fabrics</h4>
+            <p>We prioritise recycled synthetics and responsibly sourced natural blends across every collection. No greenwashing — the material source is listed on every product page.</p>
+          </div>
+        </div>
+        <div class="sustain-pillar">
+          <div class="pillar-icon">📦</div>
+          <div class="pillar-text">
+            <h4>Plastic-Free Packaging</h4>
+            <p>Every VALD order ships in compostable or recycled paper packaging. No poly bags, no tissue paper waste, no unnecessary inserts.</p>
+          </div>
+        </div>
+        <div class="sustain-pillar">
+          <div class="pillar-icon">🤝</div>
+          <div class="pillar-text">
+            <h4>Transparent Manufacturing</h4>
+            <p>We name our manufacturing partners and share the standards they're held to. Every product page links to a transparency report — because accountability shouldn't be optional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sustain-right">
+      <div class="sustain-visual">
+        <span class="sustain-big-icon">♻️</span>
+        <h3>Our commitment,<br>in plain language.</h3>
+        <p>We don't have a carbon-neutral certification yet. We don't claim to be perfect. What we do have is a clear direction, transparent sourcing, and the discipline to improve every drop.</p>
+        <div class="sustain-metrics">
+          <div class="sustain-metric">
+            <div class="metric-label">Packaging</div>
+            <div class="metric-val">100% plastic-free, every order</div>
+          </div>
+          <div class="sustain-metric">
+            <div class="metric-label">Fabrics</div>
+            <div class="metric-val">Recycled materials prioritised from day one</div>
+          </div>
+          <div class="sustain-metric">
+            <div class="metric-label">Transparency</div>
+            <div class="metric-val">Supplier reports on every product page</div>
+          </div>
+          <div class="sustain-metric">
+            <div class="metric-label">Returns</div>
+            <div class="metric-val">Fit-first exchange policy to cut waste</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-heading">Honest answers.</h2>
+      <p class="section-sub" style="margin:0 auto;">The questions we'd be asking if we were you.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          When does the first collection launch?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">We're preparing Collection I — FJORD — for its debut drop. Join the VALD Circle waitlist below to get first access before the public launch, along with early pricing and the ability to reserve your size.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How does the VALD Fit System work?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Every piece in the VALD range comes with a detailed fit guide using real-body measurement references — not just generic S/M/L descriptions. If your first order isn't the right fit, our exchange process is simple, fast, and free of charge. We'd rather you keep the gear than send it back.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What does "Nordic-tested" actually mean?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">It means we validate our fabric choices and construction in Finnish conditions — cold, wet, and variable. If a material performs across temperature extremes and year-round training in the Nordic climate, it'll handle wherever you are. It's our own bar, not a certification — but it's a high one.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Are the sustainability claims real?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">We'll link every claim to its source. Recycled material percentages, manufacturing partners, packaging specs — all visible on each product page. We're not perfect, and we say so. But everything we claim will be verifiable from launch day. No vague language like "eco-conscious" without substance behind it.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How is VALD different from other premium sportswear brands?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Most premium sportswear still trades on logo recognition and seasonal volume. VALD is a smaller, more deliberate operation — intentional drops, no overproduction, no loud branding. We're a D2C brand which means no retail markups and a direct relationship with the people buying. Fewer pieces, made better, sold honestly.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What is the VALD Circle?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">VALD Circle is our loyalty and early-access programme. Circle members get first look at new drops before they go public, access to exclusive colorways that don't appear in the general store, and member pricing on selected pieces. It doesn't cost anything to join — it's our way of rewarding people who believe in what we're building early.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you ship internationally?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Our launch focus is the Nordic and European market, with international shipping available to most destinations. Full shipping details, carrier options, and estimated delivery windows will be published at launch. Join the waitlist and we'll notify you with all the specifics once we're live.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA / JOIN -->
+<section class="cta-section" id="join">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">VALD Circle — Early Access</div>
+    <h2>Get first access to<br>Collection I.</h2>
+    <p>Join the waitlist for launch access, reserved sizing, member pricing, and a direct line to the team while we're still small. No noise — just the drop, when it's ready.</p>
+    <form class="cta-form">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Join Circle</button>
+    </form>
+    <p class="cta-note">No spam. Unsubscribe at any point. We email when there's something worth saying.</p>
+    <div class="cta-perks">
+      <span class="cta-perk">First access to Collection I</span>
+      <span class="cta-perk">Reserved sizing</span>
+      <span class="cta-perk">Member-only pricing</span>
+      <span class="cta-perk">Exclusive colorways</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">VALD<span>.</span></a>
+        <p>Nordic precision. Built for performance. Born in Finland, made for wherever you train.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Collections</h5>
+        <ul>
+          <li><a href="#collections">Training</a></li>
+          <li><a href="#collections">Running</a></li>
+          <li><a href="#collections">Athleisure</a></li>
+          <li><a href="#join">VALD Circle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#why">Why VALD</a></li>
+          <li><a href="#sustainability">Sustainability</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#faq">Fit Guide</a></li>
+          <li><a href="#faq">Exchanges</a></li>
+          <li><a href="#join">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© <span class="year"></span> VALD. All rights reserved. Helsinki, Finland.</span>
+      <span class="powered-by">Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.querySelectorAll('.year').forEach(e => e.textContent = new Date().getFullYear());
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submission
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = form.querySelector('input[type="email"]').value;
+      fetch('https://api.madmantra.app/api/landing/vald/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email})
+      }).then(function() {
+        form.innerHTML = '<p style="padding:12px;color:#4A9B8E;font-weight:600;font-size:0.95rem;">Thanks — you\'re in. We\'ll be in touch before the drop.</p>';
+      }).catch(function() {
+        form.innerHTML = '<p style="padding:12px;color:#4A9B8E;font-weight:600;font-size:0.95rem;">Thanks — you\'re on the list.</p>';
+      });
+    });
+  });
+
+  // Smooth nav hide on scroll
+  let lastScroll = 0;
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current > last
+</body>
+</html>

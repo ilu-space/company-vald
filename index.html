@@ -1,1318 +1,1274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VALD — Nordic Precision. Built for Performance.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --navy: #1A2332;
-    --teal: #4A9B8E;
-    --teal-light: #5db8a8;
-    --teal-dark: #3a7a6e;
-    --off-white: #F5F3EF;
-    --warm-grey: #E8E5E0;
-    --mid-grey: #9A9590;
-    --dark-grey: #3D3A36;
-    --white: #FFFFFF;
-    --font-body: 'Inter', sans-serif;
-    --font-heading: 'Playfair Display', serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font-body);
-    background: var(--off-white);
-    color: var(--navy);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(26, 35, 50, 0.97);
-    backdrop-filter: blur(12px);
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    border-bottom: 1px solid rgba(74, 155, 142, 0.2);
-  }
-
-  .nav-logo {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: 0.08em;
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--teal); }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--teal-light); }
-
-  .nav-cta {
-    background: var(--teal) !important;
-    color: var(--white) !important;
-    padding: 0.45rem 1.1rem;
-    border-radius: 3px;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--teal-light) !important; }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--navy);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 64px 0 0;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(74, 155, 142, 0.12) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-content {
-    padding: 5rem 5% 5rem 8%;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--teal);
-  }
-
-  .hero h1 {
-    font-family: var(--font-heading);
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--teal);
-  }
-
-  .hero-desc {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.65);
-    max-width: 440px;
-    margin-bottom: 2.5rem;
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .btn-primary {
-    background: var(--teal);
-    color: var(--white);
-    padding: 0.85rem 2rem;
-    border-radius: 3px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    color: rgba(255,255,255,0.75);
-    padding: 0.85rem 2rem;
-    border-radius: 3px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: border-color 0.2s, color 0.2s;
-    display: inline-block;
-  }
-
-  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
-
-  .hero-pills {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-top: 2.5rem;
-  }
-
-  .pill {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.55);
-    padding: 0.35rem 0.85rem;
-    border-radius: 20px;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-visual {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero-bg-pattern {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(74,155,142,0.08) 0%, transparent 50%),
-      repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 40px,
-        rgba(74,155,142,0.04) 40px,
-        rgba(74,155,142,0.04) 41px
-      );
-  }
-
-  .hero-product-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(74,155,142,0.25);
-    border-radius: 4px;
-    padding: 3rem 2.5rem;
-    width: min(380px, 90%);
-    text-align: center;
-  }
-
-  .hero-product-icon {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, rgba(74,155,142,0.2), rgba(74,155,142,0.05));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    border: 1px solid rgba(74,155,142,0.3);
-  }
-
-  .hero-product-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-product-name {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    color: var(--white);
-    margin-bottom: 0.75rem;
-  }
-
-  .hero-product-detail {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.7;
-  }
-
-  .hero-product-tags {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-top: 1.2rem;
-    flex-wrap: wrap;
-  }
-
-  .hero-tag {
-    background: rgba(74,155,142,0.15);
-    color: var(--teal-light);
-    font-size: 0.7rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 2px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    color: rgba(255,255,255,0.3);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    z-index: 10;
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, rgba(74,155,142,0.6), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
-  }
-
-  /* ── SECTION WRAPPERS ── */
-  section { padding: 6rem 5%; }
-
-  .section-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .section-eyebrow::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 1px;
-    background: var(--teal);
-  }
-
-  .section-heading {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--navy);
-    margin-bottom: 1rem;
-  }
-
-  .section-sub {
-    font-size: 1rem;
-    color: var(--mid-grey);
-    max-width: 520px;
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
-  /* ── WHAT YOU GET ── */
-  .what-section {
-    background: var(--white);
-  }
-
-  .what-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .what-header .section-eyebrow { justify-content: center; }
-  .what-header .section-eyebrow::before { display: none; }
-  .what-header .section-sub { margin: 0 auto; }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: var(--warm-grey);
-    border: 1.5px solid var(--warm-grey);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .feature-card {
-    background: var(--white);
-    padding: 2.5rem 2rem;
-    transition: background 0.25s;
-    position: relative;
-  }
-
-  .feature-card:hover { background: #fafaf9; }
-
-  .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .feature-title {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.6rem;
-    line-height: 1.3;
-  }
-
-  .feature-desc {
-    font-size: 0.88rem;
-    color: var(--mid-grey);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
-  .feature-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 2rem;
-    right: 2rem;
-    height: 2px;
-    background: var(--teal);
-    transform: scaleX(0);
-    transition: transform 0.25s;
-    transform-origin: left;
-  }
-
-  .feature-card:hover::after { transform: scaleX(1); }
-
-  /* ── WHY VALD ── */
-  .why-section {
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .why-section::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(74,155,142,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .why-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .why-left .section-heading { color: var(--white); }
-  .why-left .section-sub { color: rgba(255,255,255,0.5); max-width: 100%; }
-
-  .founder-note {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    border-left: 2px solid var(--teal);
-    background: rgba(74,155,142,0.06);
-  }
-
-  .founder-note p {
-    font-size: 0.92rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.8;
-    font-style: italic;
-    font-weight: 300;
-  }
-
-  .founder-note cite {
-    display: block;
-    margin-top: 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal);
-    font-style: normal;
-  }
-
-  .compare-table {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .compare-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .compare-row:last-child { border-bottom: none; }
-
-  .compare-cell {
-    padding: 0.9rem 1.2rem;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    border-right: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .compare-cell:last-child { border-right: none; }
-
-  .compare-row.header-row .compare-cell {
-    background: rgba(74,155,142,0.1);
-    font-weight: 600;
-    color: rgba(255,255,255,0.8);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .compare-cell.vald-col {
-    color: var(--teal-light);
-    font-weight: 500;
-  }
-
-  .check { color: var(--teal); font-weight: 700; }
-  .cross { color: rgba(255,100,100,0.6); }
-
-  /* ── COLLECTIONS PREVIEW ── */
-  .collections-section {
-    background: var(--off-white);
-  }
-
-  .collections-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .collections-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .collection-card {
-    background: var(--navy);
-    border-radius: 3px;
-    overflow: hidden;
-    position: relative;
-    aspect-ratio: 3/4;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 2rem 1.5rem;
-    cursor: pointer;
-    transition: transform 0.25s;
-  }
-
-  .collection-card:hover { transform: translateY(-4px); }
-
-  .collection-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(26,35,50,0.95) 0%, rgba(26,35,50,0.3) 50%, transparent 100%);
-    z-index: 1;
-  }
-
-  .collection-card-bg {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    opacity: 0.15;
-  }
-
-  .collection-pattern {
-    position: absolute;
-    inset: 0;
-  }
-
-  .collection-card:nth-child(1) .collection-pattern {
-    background: linear-gradient(135deg, #1e3a50, #1A2332);
-  }
-
-  .collection-card:nth-child(2) .collection-pattern {
-    background: linear-gradient(135deg, #1a3232, #1A2332);
-  }
-
-  .collection-card:nth-child(3) .collection-pattern {
-    background: linear-gradient(135deg, #2a2832, #1A2332);
-  }
-
-  .collection-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .collection-type {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 0.4rem;
-  }
-
-  .collection-name {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .collection-detail {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.45);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .collection-badge {
-    display: inline-block;
-    margin-top: 0.75rem;
-    background: rgba(74,155,142,0.2);
-    color: var(--teal-light);
-    font-size: 0.68rem;
-    padding: 0.25rem 0.65rem;
-    border-radius: 2px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border: 1px solid rgba(74,155,142,0.3);
-  }
-
-  /* ── SUSTAINABILITY ── */
-  .sustain-section {
-    background: var(--white);
-  }
-
-  .sustain-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .sustain-pillars {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .sustain-pillar {
-    display: flex;
-    gap: 1.2rem;
-    align-items: flex-start;
-  }
-
-  .pillar-icon {
-    width: 44px;
-    height: 44px;
-    flex-shrink: 0;
-    background: rgba(74,155,142,0.1);
-    border: 1px solid rgba(74,155,142,0.2);
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-  }
-
-  .pillar-text h4 {
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.25rem;
-  }
-
-  .pillar-text p {
-    font-size: 0.82rem;
-    color: var(--mid-grey);
-    font-weight: 300;
-    line-height: 1.65;
-  }
-
-  .sustain-visual {
-    background: var(--navy);
-    border-radius: 4px;
-    padding: 3rem 2.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .sustain-visual::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(74,155,142,0.08);
-  }
-
-  .sustain-big-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-
-  .sustain-visual h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--white);
-    margin-bottom: 0.75rem;
-  }
-
-  .sustain-visual p {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-  }
-
-  .sustain-metrics {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 1.5rem;
-  }
-
-  .sustain-metric {
-    background: rgba(255,255,255,0.03);
-    padding: 1rem;
-  }
-
-  .metric-label {
-    font-size: 0.68rem;
-    color: var(--teal);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
-  }
-
-  .metric-val {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.65);
-    font-weight: 300;
-  }
-
-  /* ── FAQ ── */
-  .faq-section {
-    background: var(--off-white);
-  }
-
-  .faq-inner {
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  .faq-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .faq-header .section-eyebrow { justify-content: center; }
-  .faq-header .section-eyebrow::before { display: none; }
-
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 1px solid var(--warm-grey);
-  }
-
-  .faq-item {
-    border-bottom: 1px solid var(--warm-grey);
-  }
-
-  .faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.4rem 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--navy);
-    cursor: pointer;
-    text-align: left;
-    gap: 1rem;
-    font-family: var(--font-body);
-  }
-
-  .faq-q .arrow {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    border: 1.5px solid var(--teal);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    color: var(--teal);
-    transition: transform 0.25s, background 0.25s;
-  }
-
-  .faq-item.open .faq-q .arrow {
-    transform: rotate(45deg);
-    background: var(--teal);
-    color: var(--white);
-  }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-
-  .faq-item.open .faq-a { max-height: 300px; }
-
-  .faq-a-inner {
-    padding: 0 0 1.5rem;
-    font-size: 0.88rem;
-    color: var(--mid-grey);
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  /* ── CTA SECTION ── */
-  .cta-section {
-    background: var(--navy);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(74,155,142,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 580px;
-    margin: 0 auto;
-  }
-
-  .cta-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 1rem;
-  }
-
-  .cta-section h2 {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: var(--white);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .cta-section p {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  .cta-form {
-    display: flex;
-    gap: 0;
-    max-width: 440px;
-    margin: 0 auto;
-    border-radius: 3px;
-    overflow: hidden;
-    border: 1px solid rgba(74,155,142,0.4);
-  }
-
-  .cta-form input[type="email"] {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: none;
-    padding: 0.9rem 1.2rem;
-    font-size: 0.88rem;
-    color: var(--white);
-    font-family: var(--font-body);
-    outline: none;
-  }
-
-  .cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.3); }
-
-  .cta-form button {
-    background: var(--teal);
-    color: var(--white);
-    border: none;
-    padding: 0.9rem 1.5rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: var(--font-body);
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-
-  .cta-form button:hover { background: var(--teal-light); }
-
-  .cta-note {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.25);
-    margin-top: 1rem;
-    letter-spacing: 0.04em;
-  }
-
-  .cta-perks {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2.5rem;
-    flex-wrap: wrap;
-  }
-
-  .cta-perk {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.45);
-    font-weight: 400;
-  }
-
-  .cta-perk::before {
-    content: '✓';
-    color: var(--teal);
-    font-weight: 700;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #111820;
-    padding: 3rem 5% 2rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .footer-brand .nav-logo {
-    display: inline-block;
-    margin-bottom: 1rem;
-  }
-
-  .footer-brand p {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.75;
-    font-weight: 300;
-    max-width: 260px;
-  }
-
-  .footer-col h5 {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 1rem;
-  }
-
-  .footer-col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .footer-col li a {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.3);
-    text-decoration: none;
-    font-weight: 300;
-    transition: color 0.2s;
-  }
-
-  .footer-col li a:hover { color: var(--teal-light); }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-copy {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.2);
-  }
-
-  .powered-by {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.2);
-  }
-
-  .powered-by a {
-    color: rgba(74,155,142,0.6);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .powered-by a:hover { color: var(--teal); }
-
-  /* ── MOBILE ── */
-  @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-      padding-bottom: 0;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VALD — Nordic Men's Sportswear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #4a9b8e;
+      --teal-dark: #3a8070;
+      --teal-light: #6bb8ac;
+      --navy: #1a2332;
+      --navy-light: #243044;
+      --off-white: #f7f5f2;
+      --warm-white: #fdfcfa;
+      --mid-grey: #6b7280;
+      --light-grey: #e8e5e0;
+      --text-dark: #1a2332;
+      --text-body: #374151;
     }
 
-    .hero-content {
-      padding: 5rem 6% 3rem;
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-body);
+      background: var(--warm-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Scroll animation (progressive enhancement) ── */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26, 35, 50, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(74, 155, 142, 0.2);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.12em;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal-light); }
+    .nav-cta {
+      background: var(--teal);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 4px;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.08em !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; color: #fff !important; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      background: var(--navy);
+      padding: 16px 24px 24px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #1e3040 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 60%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(74,155,142,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 40%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, rgba(74,155,142,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 20px;
+      padding: 6px 14px;
+      border: 1px solid rgba(74,155,142,0.35);
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      color: #fff;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal-light);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 40px;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid var(--teal);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); transform: translateY(-1px); }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-graphic {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, rgba(74,155,142,0.18) 0%, rgba(74,155,142,0.04) 100%);
+      border: 1px solid rgba(74,155,142,0.25);
+      border-radius: 4px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-graphic::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(74,155,142,0.05) 60px,
+          rgba(74,155,142,0.05) 61px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 60px,
+          rgba(74,155,142,0.05) 60px,
+          rgba(74,155,142,0.05) 61px
+        );
+    }
+    .hero-graphic-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px;
+    }
+    .hero-graphic-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.06);
+      letter-spacing: 0.15em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .hero-graphic-badge {
+      width: 90px;
+      height: 90px;
+      border: 2px solid var(--teal);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .hero-graphic-badge-text {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(74,155,142,0.15);
+      border: 1px solid rgba(74,155,142,0.3);
+      color: var(--teal-light);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin: 4px;
+    }
+    .hero-tags {
+      margin-top: 12px;
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--teal);
+      padding: 14px 24px;
+      overflow: hidden;
+    }
+    .strip-inner {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .strip-item {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      white-space: nowrap;
+    }
+    .strip-dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 48px;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--mid-grey);
+      max-width: 540px;
+      line-height: 1.75;
+    }
+    .section-sub.centered { margin: 0 auto; text-align: center; }
+    .text-center { text-align: center; }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy { background: var(--off-white); }
+    .phil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .phil-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .pillar {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border: 2px solid var(--teal);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 1.2rem;
+    }
+    .pillar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .pillar-desc {
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+    .phil-statement {
+      position: relative;
+    }
+    .phil-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+      padding-left: 28px;
+      border-left: 3px solid var(--teal);
+      margin-bottom: 32px;
+    }
+    .phil-text {
+      font-size: 0.95rem;
+      color: var(--mid-grey);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .sustainability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(74,155,142,0.1);
+      border: 1px solid rgba(74,155,142,0.3);
+      border-radius: 4px;
+      padding: 10px 18px;
+      margin-top: 8px;
+    }
+    .sustainability-badge span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--teal-dark);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── COLLECTIONS ── */
+    .collections { background: var(--warm-white); }
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .collection-card {
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .collection-card:hover {
+      box-shadow: 0 16px 40px rgba(26,35,50,0.1);
+      transform: translateY(-4px);
+    }
+    .collection-visual {
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cv-training { background: linear-gradient(160deg, #1a2332 0%, #2a3d52 100%); }
+    .cv-running  { background: linear-gradient(160deg, #1e3040 0%, var(--teal-dark) 100%); }
+    .cv-athleisure { background: linear-gradient(160deg, #2a3020 0%, #3d4a2e 100%); }
+    .collection-label {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+    }
+    .collection-cat {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 6px;
+    }
+    .collection-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .collection-glyph {
+      font-size: 4.5rem;
+      opacity: 0.08;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      line-height: 1;
+    }
+    .collection-body {
+      padding: 24px;
+    }
+    .collection-desc {
+      font-size: 0.88rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .collection-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      background: var(--off-white);
+      color: var(--mid-grey);
+      border: 1px solid var(--light-grey);
+    }
+
+    /* ── FABRIC / MATERIALS ── */
+    .materials { background: var(--navy); }
+    .materials .section-eyebrow { color: var(--teal-light); }
+    .materials .section-title { color: #fff; }
+    .materials .section-sub { color: rgba(255,255,255,0.55); }
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .mat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 28px 24px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .mat-card:hover {
+      border-color: rgba(74,155,142,0.4);
+      background: rgba(74,155,142,0.05);
+    }
+    .mat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(74,155,142,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--teal-light);
+      font-size: 1.1rem;
+    }
+    .mat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .mat-desc {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--off-white); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: var(--teal);
+      opacity: 0.3;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--teal-light);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 2px solid var(--teal);
+      position: relative;
+      z-index: 1;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+
+    /* ── SUSTAINABILITY ── */
+    .sustainability { background: #fff; }
+    .sus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .sus-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3040 100%);
+      border-radius: 4px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sus-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .sus-stat-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: rgba(74,155,142,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal-light);
+      font-size: 1rem;
+    }
+    .sus-stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+    .sus-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #fff;
+      line-height: 1.4;
+    }
+    .sus-points {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sus-point {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .sus-check {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border-radius: 50%;
+      background: rgba(74,155,142,0.12);
+      border: 1.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      color: var(--teal);
+      font-size: 0.7rem;
+    }
+    .sus-point-text {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+    .sus-point-text strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ── FOUNDER NOTE ── */
+    .founder { background: var(--off-white); }
+    .founder-inner {
+      max-width: 760px;
+      margin: 0 auto;
       text-align: center;
     }
-
-    .hero-eyebrow { justify-content: center; }
-    .hero-desc { margin: 0 auto 2rem; }
-    .hero-actions { justify-content: center; }
-    .hero-pills { justify-content: center; }
-
-    .hero-visual {
-      height: 50vw;
-      min-height: 280px;
-      padding: 2rem;
+    .founder-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal-dark) 100%);
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--teal-light);
+      font-weight: 600;
+      border: 2px solid var(--teal);
+    }
+    .founder-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .founder-body {
+      font-size: 0.95rem;
+      color: var(--mid-grey);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+    .founder-sig {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--navy);
+    }
+    .founder-title-small {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 4px;
+      font-family: 'Inter', sans-serif;
     }
 
-    .hero-scroll { display: none; }
-
-    .features-grid {
-      grid-template-columns: 1fr 1fr;
+    /* ── PRICING ── */
+    .pricing { background: #fff; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .price-card {
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      padding: 36px 28px;
+      position: relative;
+      background: #fff;
+      transition: box-shadow 0.3s;
+    }
+    .price-card:hover { box-shadow: 0 12px 32px rgba(26,35,50,0.08); }
+    .price-card.featured {
+      border-color: var(--teal);
+      background: var(--navy);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .price-cat {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .price-card.featured .price-cat { color: var(--teal-light); }
+    .price-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .price-card.featured .price-name { color: #fff; }
+    .price-range {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .price-card.featured .price-range { color: #fff; }
+    .price-note {
+      font-size: 0.8rem;
+      color: var(--mid-grey);
+      margin-bottom: 28px;
+    }
+    .price-card.featured .price-note { color: rgba(255,255,255,0.5); }
+    .price-divider {
+      height: 1px;
+      background: var(--light-grey);
+      margin-bottom: 24px;
+    }
+    .price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .price-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87rem;
+      color: var(--text-body);
+    }
+    .price-card.featured .price-features li { color: rgba(255,255,255,0.75); }
+    .price-features li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      margin-top: 1px;
     }
 
-    .why-inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    /* ── FAQ ── */
+    .faq { background: var(--off-white); }
+    .faq-list {
+      max-width: 760px;
+      margin: 56px auto 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .faq-question-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border: 1.5px solid var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 0.9rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--teal);
+      color: #fff;
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 0 22px;
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+      line-height: 1.8;
+      max-width: 660px;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── EARLY ACCESS ── */
+    .early-access {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3545 100%);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .early-access::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(74,155,142,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .early-access .container { position: relative; z-index: 1; }
+    .early-access .section-eyebrow { color: var(--teal-light); }
+    .early-access h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .early-access p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 44px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+    }
+    .signup-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .signup-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 20px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input[type="email"]::placeholder { color: rgba(255,255,255,0.35); }
+    .signup-form input[type="email"]:focus { border-color: var(--teal-light); }
+    .signup-form button {
+      background: var(--teal);
+      color: #fff;
+      border: 2px solid var(--teal);
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .signup-form button:hover { background: var(--teal-dark); border-color: var(--teal-dark); transform: translateY(-1px); }
+    .form-privacy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 16px;
     }
 
-    .collections-grid {
-      grid-template-columns: 1fr;
-      max-width: 400px;
+    /* ── FOOTER ── */
+    footer {
+      background: #111820;
+      padding: 64px 24px 32px;
+      color: rgba(255,255,255,0.55);
     }
-
-    .collection-card { aspect-ratio: 16/9; }
-
-    .sustain-inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-
     .footer-top {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
     }
-  }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+    .footer-brand-name span { color: var(--teal); }
+    .footer-brand-desc {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-link:hover { border-color: var(--teal); color: var(--teal-light); }
+    .footer-col-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--teal-light); }
+    .footer-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 28px;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copyright {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-powered {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-powered a {
+      color: var(--teal-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-powered a:hover { color: var(--teal); }
 
-  @media (max-width: 600px) {
-    section { padding: 4rem 5%; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .materials-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
 
-    .hero-content { padding: 4.5rem 5% 2.5rem; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      section { padding: 72px 20px; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 60px 20px 48px;
+        text-align: center;
+      }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { order: -1; }
+      .hero-graphic { max-width: 280px; }
+      .phil-grid { grid-template-columns: 1fr; gap: 48px; }
+      .collections-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .steps::before { display: none; }
+      .sus-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
 
-    .features-grid { grid-template-columns: 1fr; }
-
-    .compare-row { grid-template-columns: 1.2fr 1fr 1fr; }
-    .compare-cell { padding: 0.75rem 0.8rem; font-size: 0.75rem; }
-
-    .footer-top { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; }
-
-    .cta-form { flex-direction: column; border-radius: 3px; }
-    .cta-form input[type="email"] { border-radius: 3px 3px 0 0; }
-    .cta-form button { border-radius: 0 0 3px 3px; text-align: center; }
-
-    .collections-header { flex-direction: column; align-items: flex-start; }
-
-    .hero h1 { font-size: 2.3rem; }
-  }
-</style>
+    @media (max-width: 480px) {
+      .steps { grid-template-columns: 1fr; }
+      .materials-grid { grid-template-columns: 1fr; }
+      .strip-inner { gap: 20px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">VALD<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#collections">Collections</a></li>
-    <li><a href="#why">Why VALD</a></li>
-    <li><a href="#sustainability">Sustainability</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#join" class="nav-cta">Join the Circle</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">V<span>A</span>LD</div>
+    <ul class="nav-links">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#sustainability">Sustainability</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#early-access" class="nav-cta">Get Early Access</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#collections">Collections</a>
+    <a href="#sustainability">Sustainability</a>
+    <a href="#founder">Founder</a>
+    <a href="#faq">FAQ</a>
+    <a href="#early-access">Get Early Access →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">Born in Finland</div>
-    <h1>Nordic precision.<br><em>Built for</em><br>performance.</h1>
-    <p class="hero-desc">Scandinavian sportswear engineered for the man who moves between the gym, the trail, and the city — without compromising on design, quality, or conscience.</p>
-    <div class="hero-actions">
-      <a href="#collections" class="btn-primary">Explore Collections</a>
-      <a href="#join" class="btn-outline">Join VALD Circle</a>
-    </div>
-    <div class="hero-pills">
-      <span class="pill">Training</span>
-      <span class="pill">Running</span>
-      <span class="pill">Athleisure</span>
-      <span class="pill">Nordic-Tested Fabrics</span>
-      <span class="pill">Plastic-Free Packaging</span>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-product-card">
-      <div class="hero-product-icon">⬡</div>
-      <div class="hero-product-label">Debut Drop — Coming Soon</div>
-      <div class="hero-product-name">Collection I: FJORD</div>
-      <p class="hero-product-detail">Technical merino-blend training essentials. Designed in Helsinki. Built for every environment between the squat rack and the Saturday morning run.</p>
-      <div class="hero-product-tags">
-        <span class="hero-tag">Recycled Fabrics</span>
-        <span class="hero-tag">4-Way Stretch</span>
-        <span class="hero-tag">Muted Palette</span>
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">Born in Finland · Built for Movement</div>
+      <h1>Form meets<br /><em>function,</em><br />by design.</h1>
+      <p class="hero-sub">Nordic minimalism engineered for the way modern men move — from early-morning training to the demands of the day. Fewer pieces, made better.</p>
+      <div class="hero-actions">
+        <a href="#early-access" class="btn-primary">Get Early Access</a>
+        <a href="#collections" class="btn-outline">Explore Collections</a>
       </div>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- WHAT YOU GET -->
-<section class="what-section" id="features">
-  <div class="what-header">
-    <div class="section-eyebrow">What You Get</div>
-    <h2 class="section-heading">Every piece earns its place.</h2>
-    <p class="section-sub">VALD doesn't do bloated catalogs or seasonal noise. Each collection is intentional, small, and built to work together — or alone.</p>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="feature-icon">🎯</span>
-      <div class="feature-title">Curated Performance Collections</div>
-      <p class="feature-desc">Tight, intentional drops of training, running, and athleisure essentials — no overwhelming catalogs, just pieces that work together seamlessly.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">❄️</span>
-      <div class="feature-title">Nordic-Tested Fabrics</div>
-      <p class="feature-desc">Technical materials selected for breathability, stretch, and durability — tested and validated in harsh Nordic conditions so they perform anywhere.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🖤</span>
-      <div class="feature-title">Minimalist Design Language</div>
-      <p class="feature-desc">Clean Scandinavian aesthetics with muted tones and zero unnecessary branding. Gear that looks as good at brunch as it does in the squat rack.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">♻️</span>
-      <div class="feature-title">Sustainability Built In</div>
-      <p class="feature-desc">Recycled fabrics, responsible manufacturing partners, and plastic-free packaging. Transparency reports on every product page.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">📐</span>
-      <div class="feature-title">The VALD Fit System</div>
-      <p class="feature-desc">Detailed fit guides with real-body measurements and a hassle-free exchange policy so every piece fits perfectly on the first try.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🔒</span>
-      <div class="feature-title">Member Drops & Early Access</div>
-      <p class="feature-desc">Loyal customers get first access to limited collections, exclusive colorways, and member-only pricing through the VALD Circle program.</p>
+    <div class="hero-visual reveal">
+      <div class="hero-graphic">
+        <div class="hero-graphic-inner">
+          <div class="hero-graphic-logo">VALD</div>
+          <div class="hero-graphic-badge">
+            <div class="hero-graphic-badge-text">Nordic<br />Sportswear<br />D2C</div>
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag">Training</span>
+            <span class="hero-tag">Running</span>
+            <span class="hero-tag">Athleisure</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHY VALD -->
-<section class="why-section" id="why">
-  <div class="why-inner">
-    <div class="why-left">
-      <div class="section-eyebrow" style="color:var(--teal);">Why VALD</div>
-      <h2 class="section-heading">We built what<br>didn't exist.</h2>
-      <p class="section-sub">The choice between performance sportswear and clean, considered design shouldn't be a compromise. VALD refuses to make you pick one.</p>
-      <div class="founder-note">
-        <p>"I was tired of choosing between gear that performs and gear that looks considered. Most training wear either screams a logo at you or sacrifices function for aesthetics. VALD exists because that gap shouldn't exist — especially not in a country that takes both saunas and sport seriously."</p>
-        <cite>— The VALD Founders, Helsinki</cite>
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">Nordic Design</span>
+    <span class="strip-item">Performance Fabrics</span>
+    <span class="strip-item">Sustainable Materials</span>
+    <span class="strip-item">Direct to Consumer</span>
+    <span class="strip-item">Ships Worldwide</span>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="section-eyebrow reveal">Our Design Philosophy</div>
+    <h2 class="section-title reveal">Less, but better.</h2>
+    <div class="phil-grid">
+      <div class="phil-statement reveal">
+        <p class="phil-quote">"Great sportswear shouldn't force you to choose between looking sharp and performing at your best."</p>
+        <p class="phil-text">VALD was created for men who've grown tired of the compromise — either technical gear that looks purely functional, or stylish clothes that fall apart under real physical demands.</p>
+        <p class="phil-text">We apply Scandinavian design discipline to every silhouette, every seam, every stitch. The result is a wardrobe that transitions effortlessly from a strength session to a coffee meeting — without changing a thing.</p>
+        <div class="sustainability-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9b8e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Sustainability is foundational, not optional</span>
+        </div>
       </div>
-    </div>
-    <div class="why-right">
-      <div class="compare-table">
-        <div class="compare-row header-row">
-          <div class="compare-cell">Feature</div>
-          <div class="compare-cell">VALD</div>
-          <div class="compare-cell">Typical Fast-Fashion Sport</div>
+      <div class="phil-pillars reveal">
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <div>
+            <div class="pillar-title">Nordic Minimalism</div>
+            <p class="pillar-desc">Clean silhouettes, restrained palettes, and purposeful details — no excess noise, only intentional design.</p>
+          </div>
         </div>
-        <div class="compare-row">
-          <div class="compare-cell">Recycled technical fabrics</div>
-          <div class="compare-cell vald-col"><span class="check">✓</span> Standard</div>
-          <div class="compare-cell"><span class="cross">✗</span> Rare</div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="pillar-title">Technical Performance</div>
+            <p class="pillar-desc">Every fabric is selected for moisture control, stretch, breathability, and durability under high-intensity use.</p>
+          </div>
         </div>
-        <div class="compare-row">
-          <div class="compare-cell">Curated, small drops</div>
-          <div class="compare-cell vald-col"><span class="check">✓</span> Always</div>
-          <div class="compare-cell"><span class="cross">✗</span> Volume-first</div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="pillar-title">Versatile Utility</div>
+            <p class="pillar-desc">Designed for the full arc of a modern man's day — gym, street, café — without looking like gym gear in a café.</p>
+          </div>
         </div>
-        <div class="compare-row">
-          <div class="compare-cell">Logo-minimal design</div>
-          <div class="compare-cell vald-col"><span class="check">✓</span> Core principle</div>
-          <div class="compare-cell"><span class="cross">✗</span> Logo-heavy</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell">Plastic-free packaging</div>
-          <div class="compare-cell vald-col"><span class="check">✓</span> Every order</div>
-          <div class="compare-cell"><span class="cross">✗</span> Uncommon</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell">Transparency reports</div>
-          <div class="compare-cell vald-col"><span class="check">✓</span> Per product</div>
-          <div class="compare-cell"><span class="cross">✗</span> None</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell">Hassle-free fit exchange</div>
-          <div class="compare-cell vald-col"><span class="check">✓</span> Built in</div>
-          <div class="compare-cell"><span class="cross">✗</span> Varies</div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+          </div>
+          <div>
+            <div class="pillar-title">Responsible Materials</div>
+            <p class="pillar-desc">Recycled fibres, low-impact dyes, and packaging that doesn't outlast the planet. Built to wear longer, toss less.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1320,208 +1276,369 @@
 </section>
 
 <!-- COLLECTIONS -->
-<section class="collections-section" id="collections">
-  <div class="collections-header">
-    <div>
-      <div class="section-eyebrow">The Range</div>
-      <h2 class="section-heading">Three territories.<br>One wardrobe.</h2>
+<section class="collections" id="collections">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">The VALD Range</div>
+      <h2 class="section-title">Three collections.<br />One coherent wardrobe.</h2>
+      <p class="section-sub centered">Each collection is built around a specific mode of activity, yet designed so pieces move seamlessly between them.</p>
     </div>
-    <p class="section-sub" style="max-width:320px; text-align:right;">Each category is built for overlap — gear that earns its way from training to everyday without changing out of it.</p>
+    <div class="collections-grid">
+
+      <div class="collection-card reveal">
+        <div class="collection-visual cv-training">
+          <div class="collection-glyph">01</div>
+          <div class="collection-label">
+            <div class="collection-cat">Collection 01</div>
+            <div class="collection-name">Train</div>
+          </div>
+        </div>
+        <div class="collection-body">
+          <p class="collection-desc">Built for the iron room and the box. Compressive, four-way stretch fabrics with flatlock seaming that stays invisible under the bar. Structured enough to move in, clean enough to walk out in.</p>
+          <div class="collection-tags">
+            <span class="tag">4-Way Stretch</span>
+            <span class="tag">Flatlock Seams</span>
+            <span class="tag">Sweat-Wick</span>
+            <span class="tag">Anti-Odour</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-card reveal">
+        <div class="collection-visual cv-running">
+          <div class="collection-glyph">02</div>
+          <div class="collection-label">
+            <div class="collection-cat">Collection 02</div>
+            <div class="collection-name">Run</div>
+          </div>
+        </div>
+        <div class="collection-body">
+          <p class="collection-desc">Lightweight, wind-resistant, and reflective where it counts. Ergonomic patterning designed around a runner's stride, not a mannequin's pose. Packable and fast-drying for any condition.</p>
+          <div class="collection-tags">
+            <span class="tag">Lightweight</span>
+            <span class="tag">Wind-Resistant</span>
+            <span class="tag">Reflective</span>
+            <span class="tag">Packable</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-card reveal">
+        <div class="collection-visual cv-athleisure">
+          <div class="collection-glyph">03</div>
+          <div class="collection-label">
+            <div class="collection-cat">Collection 03</div>
+            <div class="collection-name">Live</div>
+          </div>
+        </div>
+        <div class="collection-body">
+          <p class="collection-desc">The bridge between performance and daily life. Relaxed tailoring in technical knits and woven blends — designed to look considered in every setting while maintaining a level of comfort that has no business being this sharp.</p>
+          <div class="collection-tags">
+            <span class="tag">Technical Knit</span>
+            <span class="tag">Relaxed Fit</span>
+            <span class="tag">Versatile</span>
+            <span class="tag">Everyday</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="collections-grid">
-    <div class="collection-card">
-      <div class="collection-pattern"></div>
-      <div class="collection-card-bg">🏋️</div>
-      <div class="collection-content">
-        <div class="collection-type">Category 01</div>
-        <div class="collection-name">Training</div>
-        <p class="collection-detail">Compression-ready shorts, performance tops, and mid-layers engineered for the weight room and beyond.</p>
-        <span class="collection-badge">Drop I — Coming Soon</span>
+</section>
+
+<!-- MATERIALS -->
+<section class="materials" id="materials">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Fabric Innovation</div>
+      <h2 class="section-title" style="color:#fff;">What VALD is made of.</h2>
+      <p class="section-sub centered">We start with the material and work outward. Every fabric we use earns its place with measurable performance credentials.</p>
+    </div>
+    <div class="materials-grid">
+      <div class="mat-card reveal">
+        <div class="mat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="mat-title">Recycled Polyester</div>
+        <p class="mat-desc">Sourced from post-consumer plastics. High-tenacity, moisture-wicking, and engineered to retain shape through hundreds of washes.</p>
+      </div>
+      <div class="mat-card reveal">
+        <div class="mat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <div class="mat-title">Merino-Tech Blend</div>
+        <p class="mat-desc">Natural temperature regulation and odour resistance of Merino wool, reinforced with technical fibres for endurance and stretch performance.</p>
+      </div>
+      <div class="mat-card reveal">
+        <div class="mat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="mat-title">Supplex Nylon</div>
+        <p class="mat-desc">Ultra-soft, cotton-like hand feel combined with nylon's superior abrasion resistance, packability, and colour retention.</p>
+      </div>
+      <div class="mat-card reveal">
+        <div class="mat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="mat-title">Organic Cotton Blend</div>
+        <p class="mat-desc">For our athleisure pieces — breathable, soft, and grown without synthetic pesticides. Blended with elastane for everyday ease of movement.</p>
       </div>
     </div>
-    <div class="collection-card">
-      <div class="collection-pattern"></div>
-      <div class="collection-card-bg">🏃</div>
-      <div class="collection-content">
-        <div class="collection-type">Category 02</div>
-        <div class="collection-name">Running</div>
-        <p class="collection-detail">Lightweight, wind-resistant essentials built for Nordic trails and urban miles — in muted tones that don't shout.</p>
-        <span class="collection-badge">Drop I — Coming Soon</span>
-      </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how-it-works">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">The Experience</div>
+      <h2 class="section-title">How VALD works</h2>
+      <p class="section-sub centered">A direct relationship between us and you — no middlemen, no markups, no compromises on quality.</p>
     </div>
-    <div class="collection-card">
-      <div class="collection-pattern"></div>
-      <div class="collection-card-bg">🌆</div>
-      <div class="collection-content">
-        <div class="collection-type">Category 03</div>
-        <div class="collection-name">Athleisure</div>
-        <p class="collection-detail">Clean, considered pieces that move between the gym bag and the city without hesitation. Function disguised as everyday style.</p>
-        <span class="collection-badge">Drop I — Coming Soon</span>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Curate Your Kit</div>
+        <p class="step-desc">Browse our tightly edited collections. Each piece is designed to integrate with the others — build a cohesive wardrobe, not a cluttered drawer.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Choose with Confidence</div>
+        <p class="step-desc">Detailed fit guides, fabric breakdowns, and transparent sizing. Know exactly what you're getting before it arrives at your door.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Delivered Responsibly</div>
+        <p class="step-desc">Ships in plastic-free, recyclable packaging. Direct from our logistics partner to your door — fast, tracked, and sustainably considered.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Wear & Re-order</div>
+        <p class="step-desc">When you find your kit, we make it easy to restock. Your sizes and preferences saved, so reordering takes seconds.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SUSTAINABILITY -->
-<section class="sustain-section" id="sustainability">
-  <div class="sustain-inner">
-    <div class="sustain-left">
-      <div class="section-eyebrow">Built with Responsibility</div>
-      <h2 class="section-heading">Sustainability isn't<br>a footnote here.</h2>
-      <p class="section-sub">We built responsibility into the process from the first sketch — not as a marketing layer applied after the fact.</p>
-      <div class="sustain-pillars" style="margin-top:2.5rem;">
-        <div class="sustain-pillar">
-          <div class="pillar-icon">🌿</div>
-          <div class="pillar-text">
-            <h4>Recycled & Responsible Fabrics</h4>
-            <p>We prioritise recycled synthetics and responsibly sourced natural blends across every collection. No greenwashing — the material source is listed on every product page.</p>
+<section class="sustainability" id="sustainability">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Responsible by Design</div>
+      <h2 class="section-title">Built to last.<br />Made to matter.</h2>
+      <p class="section-sub" style="margin-bottom: 0;">Sustainability isn't a badge we attach after the fact — it's a constraint we design within from the very first sketch.</p>
+    </div>
+    <div class="sus-grid">
+      <div class="sus-visual reveal">
+        <div class="sus-stat">
+          <div class="sus-stat-icon">♻</div>
+          <div>
+            <div class="sus-stat-label">Materials Sourcing</div>
+            <div class="sus-stat-value">Recycled and responsibly sourced fibres used across core collections</div>
           </div>
         </div>
-        <div class="sustain-pillar">
-          <div class="pillar-icon">📦</div>
-          <div class="pillar-text">
-            <h4>Plastic-Free Packaging</h4>
-            <p>Every VALD order ships in compostable or recycled paper packaging. No poly bags, no tissue paper waste, no unnecessary inserts.</p>
+        <div class="sus-stat">
+          <div class="sus-stat-icon">📦</div>
+          <div>
+            <div class="sus-stat-label">Packaging</div>
+            <div class="sus-stat-value">100% plastic-free shipping materials — recycled, recyclable, or compostable</div>
           </div>
         </div>
-        <div class="sustain-pillar">
-          <div class="pillar-icon">🤝</div>
-          <div class="pillar-text">
-            <h4>Transparent Manufacturing</h4>
-            <p>We name our manufacturing partners and share the standards they're held to. Every product page links to a transparency report — because accountability shouldn't be optional.</p>
+        <div class="sus-stat">
+          <div class="sus-stat-icon">🌊</div>
+          <div>
+            <div class="sus-stat-label">Dyes & Treatments</div>
+            <div class="sus-stat-value">Low-impact, bluesign® compatible dye processes where available</div>
+          </div>
+        </div>
+        <div class="sus-stat">
+          <div class="sus-stat-icon">🔄</div>
+          <div>
+            <div class="sus-stat-label">Longevity First</div>
+            <div class="sus-stat-value">Products engineered for durability — fewer replacements, less waste over time</div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="sustain-right">
-      <div class="sustain-visual">
-        <span class="sustain-big-icon">♻️</span>
-        <h3>Our commitment,<br>in plain language.</h3>
-        <p>We don't have a carbon-neutral certification yet. We don't claim to be perfect. What we do have is a clear direction, transparent sourcing, and the discipline to improve every drop.</p>
-        <div class="sustain-metrics">
-          <div class="sustain-metric">
-            <div class="metric-label">Packaging</div>
-            <div class="metric-val">100% plastic-free, every order</div>
-          </div>
-          <div class="sustain-metric">
-            <div class="metric-label">Fabrics</div>
-            <div class="metric-val">Recycled materials prioritised from day one</div>
-          </div>
-          <div class="sustain-metric">
-            <div class="metric-label">Transparency</div>
-            <div class="metric-val">Supplier reports on every product page</div>
-          </div>
-          <div class="sustain-metric">
-            <div class="metric-label">Returns</div>
-            <div class="metric-val">Fit-first exchange policy to cut waste</div>
-          </div>
+      <div class="sus-points reveal">
+        <div class="section-eyebrow">Our Commitments</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--navy); margin-bottom:28px; line-height:1.3;">We hold ourselves to a higher standard than the industry default.</h3>
+        <div class="sus-point">
+          <div class="sus-check">✓</div>
+          <p class="sus-point-text"><strong>No greenwashing.</strong> We only make sustainability claims we can substantiate with specific material certifications or measurable process improvements.</p>
         </div>
+        <div class="sus-point">
+          <div class="sus-check">✓</div>
+          <p class="sus-point-text"><strong>Anti-fast fashion model.</strong> We release curated drops, not constant newness. Fewer SKUs, deeper quality, longer product lives.</p>
+        </div>
+        <div class="sus-point">
+          <div class="sus-check">✓</div>
+          <p class="sus-point-text"><strong>Supply chain transparency.</strong> We'll publish where and how our garments are made — because you deserve to know what you're wearing.</p>
+        </div>
+        <div class="sus-point">
+          <div class="sus-check">✓</div>
+          <p class="sus-point-text"><strong>Care & repair guidance.</strong> Every product ships with guidance on extending its lifespan — wash cold, air dry, wear longer.</p>
+        </div>
+        <div class="sus-point">
+          <div class="sus-check">✓</div>
+          <p class="sus-point-text"><strong>Ongoing improvement.</strong> We're not perfect yet. We commit to publishing our sustainability progress annually and setting harder targets each cycle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER NOTE -->
+<section class="founder" id="founder">
+  <div class="container">
+    <div class="founder-inner reveal">
+      <div class="founder-avatar">V</div>
+      <div class="section-eyebrow" style="text-align:center;">A Note from the Founder</div>
+      <p class="founder-quote">"I built VALD because I couldn't find what I wanted to wear — and I was tired of settling."</p>
+      <p class="founder-body">Every time I walked into a sportswear store, I had to choose: do I want something that performs, or something I'm actually proud to wear? The technical stuff looked clinical. The lifestyle stuff fell apart after six months. The gap between those two options is exactly where VALD lives.</p>
+      <p class="founder-body">I grew up in Finland, where design is taken seriously as a discipline — not a decoration. Where simplicity is considered a form of respect for the person using the thing. I wanted to apply that thinking to sportswear. Not just make something that looks Nordic, but build something that thinks Nordic: functional, considered, durable, honest.</p>
+      <p class="founder-body">This is still early. We're building in public, and we'd rather be honest with you about that than pretend we've been around for a decade. If you believe in the same things we do — quality over quantity, form and function as inseparable, sustainability as a real commitment — we'd love to have you with us from the start.</p>
+      <div class="founder-sig">— The Founder, VALD</div>
+      <div class="founder-title-small">Helsinki, Finland</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Transparent Pricing</div>
+      <h2 class="section-title">Premium quality,<br />direct-to-you pricing.</h2>
+      <p class="section-sub centered">By selling directly, we skip the retail margin — which means you get a better product for what comparable quality would cost in a store.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-cat">Essentials</div>
+        <div class="price-name">Tees, Tanks & Base Layers</div>
+        <div class="price-range">€49 – €89</div>
+        <p class="price-note">Per piece · Free shipping over €120</p>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Performance or organic cotton blends</li>
+          <li>4-way stretch where needed</li>
+          <li>Flatlock or taped seam finishing</li>
+          <li>Moisture-wicking & quick-dry</li>
+          <li>30-day returns, no questions</li>
+        </ul>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="featured-badge">Most Popular</div>
+        <div class="price-cat">Performance</div>
+        <div class="price-name">Shorts, Tights & Training Tops</div>
+        <div class="price-range" style="color:#fff;">€89 – €149</div>
+        <p class="price-note">Per piece · Free shipping always</p>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Technical performance fabrics</li>
+          <li>Ergonomic athletic patterning</li>
+          <li>Anti-odour treatment included</li>
+          <li>Reflective details on run pieces</li>
+          <li>30-day returns, no questions</li>
+        </ul>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-cat">Outerwear & Layering</div>
+        <div class="price-name">Jackets, Hoodies & Midlayers</div>
+        <div class="price-range">€129 – €229</div>
+        <p class="price-note">Per piece · Free shipping always</p>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Wind-resistant & water-repellent options</li>
+          <li>Packable construction where applicable</li>
+          <li>Premium zipper & hardware details</li>
+          <li>Recycled-fill insulation on warmth layers</li>
+          <li>30-day returns, no questions</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq-section" id="faq">
-  <div class="faq-inner">
-    <div class="faq-header">
-      <div class="section-eyebrow">FAQ</div>
-      <h2 class="section-heading">Honest answers.</h2>
-      <p class="section-sub" style="margin:0 auto;">The questions we'd be asking if we were you.</p>
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Questions Answered</div>
+      <h2 class="section-title">Straight answers,<br />no fluff.</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list reveal">
 
       <div class="faq-item">
-        <button class="faq-q">
-          When does the first collection launch?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">When does VALD launch, and how do I be among the first to know?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">We're preparing Collection I — FJORD — for its debut drop. Join the VALD Circle waitlist below to get first access before the public launch, along with early pricing and the ability to reserve your size.</div>
-        </div>
+        <div class="faq-answer">We're in the final stages of development before our first drop. Join our early access list at the bottom of this page and you'll be the first to know when we go live — along with early-access pricing for founding customers.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          How does the VALD Fit System work?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Where are VALD garments manufactured?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Every piece in the VALD range comes with a detailed fit guide using real-body measurement references — not just generic S/M/L descriptions. If your first order isn't the right fit, our exchange process is simple, fast, and free of charge. We'd rather you keep the gear than send it back.</div>
-        </div>
+        <div class="faq-answer">We work with a small number of carefully vetted manufacturing partners who meet our standards for ethical labour practices and environmental responsibility. We'll publish full supply chain details at launch — transparency is a core commitment, not an afterthought.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          What does "Nordic-tested" actually mean?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">How should I size VALD pieces?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">It means we validate our fabric choices and construction in Finnish conditions — cold, wet, and variable. If a material performs across temperature extremes and year-round training in the Nordic climate, it'll handle wherever you are. It's our own bar, not a certification — but it's a high one.</div>
-        </div>
+        <div class="faq-answer">We design to an athletic Nordic fit — tailored but not compressive, with enough movement for real athletic use. Detailed size guides with measurements and fit notes will accompany every product at launch. We also offer a no-fuss 30-day return and exchange policy so you can try with confidence.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          Are the sustainability claims real?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Do you ship internationally?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">We'll link every claim to its source. Recycled material percentages, manufacturing partners, packaging specs — all visible on each product page. We're not perfect, and we say so. But everything we claim will be verifiable from launch day. No vague language like "eco-conscious" without substance behind it.</div>
-        </div>
+        <div class="faq-answer">Yes — VALD ships worldwide. We're a digital-first D2C brand, and our early access list already includes people from across Europe, the UK, North America, and beyond. Shipping rates and delivery estimates by region will be fully transparent at checkout.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          How is VALD different from other premium sportswear brands?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">What sustainability certifications do you hold?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Most premium sportswear still trades on logo recognition and seasonal volume. VALD is a smaller, more deliberate operation — intentional drops, no overproduction, no loud branding. We're a D2C brand which means no retail markups and a direct relationship with the people buying. Fewer pieces, made better, sold honestly.</div>
-        </div>
+        <div class="faq-answer">We're a new brand, so we're building our certification portfolio as we scale. We'll only claim certifications we actually hold at the time of writing. Currently, our fabric sourcing specifications require partners to meet OEKO-TEX® or GRS (Global Recycled Standard) requirements where applicable. We'll update this as we progress.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          What is the VALD Circle?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">How does your return and exchange policy work?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">VALD Circle is our loyalty and early-access programme. Circle members get first look at new drops before they go public, access to exclusive colorways that don't appear in the general store, and member pricing on selected pieces. It doesn't cost anything to join — it's our way of rewarding people who believe in what we're building early.</div>
-        </div>
+        <div class="faq-answer">30 days, no questions asked. If a piece doesn't fit, doesn't perform as described, or simply isn't right for you — send it back for a full refund or exchange. We want you to have total confidence buying from a new brand.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          Do you ship internationally?
-          <span class="arrow">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Is VALD only for athletes or gym-goers?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Our launch focus is the Nordic and European market, with international shipping available to most destinations. Full shipping details, carrier options, and estimated delivery windows will be published at launch. Join the waitlist and we'll notify you with all the specifics once we're live.</div>
-        </div>
+        <div class="faq-answer">VALD is for any man who values quality and clean design — regardless of how elite his training is. Our Live collection in particular is designed squarely for daily urban life. You don't need to be training every day to want clothes that are well-made, versatile, and built to last.</div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- CTA / JOIN -->
-<section class="cta-section" id="join">
-  <div class="cta-inner">
-    <div class="cta-eyebrow">VALD Circle — Early Access</div>
-    <h2>Get first access to<br>Collection I.</h2>
-    <p>Join the waitlist for launch access, reserved sizing, member pricing, and a direct line to the team while we're still small. No noise — just the drop, when it's ready.</p>
-    <form class="cta-form">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Join Circle</button>
+<!-- EARLY ACCESS -->
+<section class="early-access" id="early-access">
+  <div class="container reveal">
+    <div class="section-eyebrow">Be First</div>
+    <h2>Join the early access list.</h2>
+    <p>Be among the first to shop when we launch. Early access members get first pick of the first drop, plus founding-customer pricing that won't be available once we open to everyone.</p>
+    <form class="signup-form" novalidate>
+      <input type="email" placeholder="Your email address" required autocomplete="email" />
+      <button type="submit">Get Early Access</button>
     </form>
-    <p class="cta-note">No spam. Unsubscribe at any point. We email when there's something worth saying.</p>
-    <div class="cta-perks">
-      <span class="cta-perk">First access to Collection I</span>
-      <span class="cta-perk">Reserved sizing</span>
-      <span class="cta-perk">Member-only pricing</span>
-      <span class="cta-perk">Exclusive colorways</span>
-    </div>
+    <p class="form-privacy">No spam. No sharing your data. Unsubscribe any time.</p>
   </div>
 </section>
 
@@ -1529,79 +1646,120 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo">VALD<span>.</span></a>
-        <p>Nordic precision. Built for performance. Born in Finland, made for wherever you train.</p>
+      <div>
+        <div class="footer-brand-name">V<span>A</span>LD</div>
+        <p class="footer-brand-desc">Nordic men's sportswear combining Scandinavian minimalist design with high-performance athletic fabrics. Born in Finland.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="social-link" aria-label="TikTok">TK</a>
+          <a href="#" class="social-link" aria-label="Pinterest">PT</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h5>Collections</h5>
-        <ul>
-          <li><a href="#collections">Training</a></li>
-          <li><a href="#collections">Running</a></li>
-          <li><a href="#collections">Athleisure</a></li>
-          <li><a href="#join">VALD Circle</a></li>
+      <div>
+        <div class="footer-col-title">Collections</div>
+        <ul class="footer-links">
+          <li><a href="#collections">Train</a></li>
+          <li><a href="#collections">Run</a></li>
+          <li><a href="#collections">Live</a></li>
+          <li><a href="#materials">Materials</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#why">Why VALD</a></li>
+      <div>
+        <div class="footer-col-title">Brand</div>
+        <ul class="footer-links">
+          <li><a href="#philosophy">Philosophy</a></li>
           <li><a href="#sustainability">Sustainability</a></li>
+          <li><a href="#founder">Founder Note</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h5>Support</h5>
-        <ul>
-          <li><a href="#faq">Fit Guide</a></li>
-          <li><a href="#faq">Exchanges</a></li>
-          <li><a href="#join">Contact</a></li>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#early-access">Early Access</a></li>
+          <li><a href="#">Returns Policy</a></li>
+          <li><a href="#">Size Guide</a></li>
         </ul>
       </div>
     </div>
+    <div class="footer-divider"></div>
     <div class="footer-bottom">
-      <span class="footer-copy">© <span class="year"></span> VALD. All rights reserved. Helsinki, Finland.</span>
-      <span class="powered-by">Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a></span>
+      <p class="footer-copyright">© <span class="year"></span> VALD. All rights reserved. Helsinki, Finland.</p>
+      <p class="footer-powered">Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a></p>
     </div>
   </div>
 </footer>
 
+<!-- SCRIPTS -->
 <script>
-  // Year
-  document.querySelectorAll('.year').forEach(e => e.textContent = new Date().getFullYear());
+  // Progressive enhancement: add JS class
+  document.documentElement.classList.add('js');
+</script>
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const item = this.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
+<script>
+  // Mobile menu toggle
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
   });
 
-  // Form submission
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+
+<script>
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+</script>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) { item.classList.add('open'); }
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+</script>
+
+<script>
+  // Email form submission
   document.querySelectorAll('form').forEach(function(form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var email = form.querySelector('input[type="email"]').value;
       fetch('https://api.madmantra.app/api/landing/vald/signup', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email: email})
       }).then(function() {
-        form.innerHTML = '<p style="padding:12px;color:#4A9B8E;font-weight:600;font-size:0.95rem;">Thanks — you\'re in. We\'ll be in touch before the drop.</p>';
-      }).catch(function() {
-        form.innerHTML = '<p style="padding:12px;color:#4A9B8E;font-weight:600;font-size:0.95rem;">Thanks — you\'re on the list.</p>';
+        form.innerHTML = '<p style="padding:12px;color:#6bb8ac;font-weight:600;font-size:1rem;">Thanks! We\'ll be in touch when we launch.</p>';
       });
     });
   });
+</script>
 
-  // Smooth nav hide on scroll
-  let lastScroll = 0;
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > last
+<script>
+  // Copyright year
+  document.querySelectorAll('.year').forEach(function(e) { e.textContent = new Date().getFullYear(); });
+</script>
+
 </body>
 </html>
